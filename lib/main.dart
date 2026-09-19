@@ -1,26 +1,43 @@
 import 'package:flutter/material.dart';
 
-import 'product_screen.dart';
+import 'features/auth/presentation/login_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const YZAccessoriesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class YZAccessoriesApp extends StatelessWidget {
+  const YZAccessoriesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'YZ Accessories',
+
       theme: ThemeData(
+        brightness: Brightness.light,
         useMaterial3: true,
-        fontFamily: 'Arial',
-        scaffoldBackgroundColor: const Color(0xFFF8F7F4),
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF171717)),
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF111111),
+          brightness: Brightness.light,
+        ),
       ),
-      home: const ProductsScreen(),
+
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        useMaterial3: true,
+        scaffoldBackgroundColor: const Color(0xFF101010),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF111111),
+          brightness: Brightness.dark,
+        ),
+      ),
+
+      themeMode: ThemeMode.light,
+
+      home: const LoginPage(),
     );
   }
 }

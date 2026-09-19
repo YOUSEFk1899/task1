@@ -1,5 +1,5 @@
 class ProductsResponse {
-  final List<ProductDto> items;
+  final List<ProductModel> items;
   final int page;
   final int pageSize;
   final int totalCount;
@@ -17,8 +17,9 @@ class ProductsResponse {
 
   factory ProductsResponse.fromJson(Map<String, dynamic> json) {
     return ProductsResponse(
-      items: (json['items'] as List<dynamic>?)
-              ?.map((e) => ProductDto.fromJson(e as Map<String, dynamic>))
+      items:
+          (json['items'] as List<dynamic>?)
+              ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
       page: json['page'] ?? 1,
@@ -30,7 +31,7 @@ class ProductsResponse {
   }
 }
 
-class ProductDto {
+class ProductModel {
   final String id;
   final String productCode;
   final String name;
@@ -41,20 +42,20 @@ class ProductDto {
   final double rating;
   final int discountPercentage;
 
-  ProductDto({
+  ProductModel({
     required this.id,
     required this.productCode,
     required this.name,
     required this.description,
     required this.coverPictureUrl,
-    required this.price,
     required this.stock,
     required this.rating,
     required this.discountPercentage,
+    required this.price,
   });
 
-  factory ProductDto.fromJson(Map<String, dynamic> json) {
-    return ProductDto(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['id']?.toString() ?? '',
       productCode: json['productCode']?.toString() ?? '',
       name: json['name']?.toString() ?? '',
